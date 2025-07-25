@@ -11,7 +11,7 @@ Driver for HTS221 temperature and humidity sensor.
 ## Installation
 
 ```sh
-idf.py add-dependency "esp-idf-lib/hts221^1.0.0
+idf.py add-dependency esp-idf-lib/hts221^1.0.0
 ```
 
 ## Support
