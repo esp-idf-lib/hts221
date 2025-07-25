@@ -19,7 +19,7 @@ dependencies:
   esp-idf-lib/esp_idf_lib_helpers:
     version: "*"
 maintainers:
-  -
+  - Alexander Bodenseher (@saasaa)
 url: https://github.com/esp-idf-lib/core
 repository: https://github.com/esp-idf-lib/hts221
 documentation: https://esp-idf-lib.github.io/hts221/
