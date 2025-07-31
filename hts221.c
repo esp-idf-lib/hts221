@@ -345,7 +345,7 @@ esp_err_t hts221_set_drdy_config(hts221_t *dev, bool enable, hts221_drdy_mode_t 
     CHECK_ARG(dev && mode <= HTS221_DRDY_OPEN_DRAIN && active <= HTS221_DRDY_ACTIVE_LOW);
 
     return write_reg(dev, REG_CTRL_REG3,
-            (enable ? BIT(BIT_CTRL_REG3_DRDY) : 0) | (mode << BIT_CTRL_REG3_PP_OD) | (active << BIT_CTRL_REG3_DRDY_H_L));
+                     (enable ? BIT(BIT_CTRL_REG3_DRDY) : 0) | (mode << BIT_CTRL_REG3_PP_OD) | (active << BIT_CTRL_REG3_DRDY_H_L));
 }
 
 esp_err_t hts221_is_data_ready(hts221_t *dev, bool *ready)
@@ -388,13 +388,13 @@ esp_err_t hts221_get_data(hts221_t *dev, float *t, float *rh)
     if (rh)
     {
         *rh = (float)(dev->cal.H1_rH - dev->cal.H0_rH) * (raw_rh - dev->cal.H0_T0_OUT) /
-                (float)(dev->cal.H1_T0_OUT - dev->cal.H0_T0_OUT) + (float)dev->cal.H0_rH;
+              (float)(dev->cal.H1_T0_OUT - dev->cal.H0_T0_OUT) + (float)dev->cal.H0_rH;
         if (*rh > 100)
             *rh = 100;
     }
     if (t)
         *t = (float)(dev->cal.T1_degC - dev->cal.T0_degC) * (raw_t - dev->cal.T0_OUT) /
-                (float)(dev->cal.T1_OUT - dev->cal.T0_OUT) + (float)dev->cal.T0_degC;
+             (float)(dev->cal.T1_OUT - dev->cal.T0_OUT) + (float)dev->cal.T0_degC;
 
     return ESP_OK;
 }
